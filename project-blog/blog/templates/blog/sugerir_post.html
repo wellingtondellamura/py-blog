@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+    <div class="row">
+
+        <div class="leftcolumn">
+            <div class="card">
+                <h2>{{ subtitle }}</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    <table>
+                        {{ form.as_table }}
+                    </table>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}

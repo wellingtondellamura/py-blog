@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'blog/css/estilo.css' %}">
+</head>
+
+<body>
+
+    <div class="header">
+      <h2><a href="/">{{ title }}</a></h2>
+    </div>
+
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% block content %}
+
+
+    {% endblock %}
+
+
+    <div class="footer">
+
+    </div>
+
+</body>
+
+</html>

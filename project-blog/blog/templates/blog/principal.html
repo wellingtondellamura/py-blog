@@ -1,0 +1,42 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+    <div class="row">
+
+        <div class="leftcolumn">
+            <div class="card">
+                {% for post in lista_posts %}
+                    <h2>{{ post.titulo }}</h2>
+                    <h5>{{ post.data }} (alterado em {{ post.data_alteracao }})</h5>
+                    <h5>{{ post.categoria }} / {{ post.cidade }} ({{ post.get_palavras_chave }})</h5>
+                    <img src="{{ post.imagem.url }}">
+                    <p>{{ post.texto }}</p>
+                {% empty %}
+                    <p>Não existem posts</p>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="rightcolumn">
+            <div class="card">
+                <h2>Busca</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    <table>
+                        {{ form.as_table }}
+                    </table>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+
+            <div class="card">
+                <a href="sugerir_post/">Sugerir post</a>
+            </div>
+
+        </div>
+
+    </div>
+
+
+{% endblock %}
